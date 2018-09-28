@@ -72,7 +72,7 @@ class Piggy(pigo.Pigo):
             self.encR(108)
 
     def bob_head(self):
-        for x in range(self.MIDPOINT - 20, self.MIDPOINT + 20,5):
+        for x in range(self.MIDPOINT - 20, self.MIDPOINT + 20,15):
             self.servo(x)
 
     def shake_it_up(self):
