@@ -67,9 +67,9 @@ class Piggy(pigo.Pigo):
             self.back_and_forth()
 
     def side_to_side(self):
-       for x in range(20):
-            self.encL(108)
-            self.encR(108)
+       for x in range(3):
+            self.encL(18)
+            self.encR(18)
 
     def bob_head(self):
         for x in range(self.MIDPOINT - 20, self.MIDPOINT + 20,15):
