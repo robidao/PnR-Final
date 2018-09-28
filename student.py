@@ -65,6 +65,9 @@ class Piggy(pigo.Pigo):
             self.bob_head()
             self.shake_it_up()
             self.back_and_forth()
+            self.right()
+            time.sleep(3)
+            self.stop()
 
     def side_to_side(self):
        for x in range(3):
@@ -86,6 +89,9 @@ class Piggy(pigo.Pigo):
         for x in range(3):
             self.encB(6)
             self.encF(6)
+
+
+
 
     def obstacle_count(self):
         """scans and estimates the number of obstacles within sight"""
