@@ -66,7 +66,7 @@ class Piggy(pigo.Pigo):
             self.shake_it_up()
             self.back_and_forth()
             self.right()
-            time.sleep(3)
+            time.sleep(6)
             self.stop()
 
     def side_to_side(self):
