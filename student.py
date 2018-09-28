@@ -61,8 +61,8 @@ class Piggy(pigo.Pigo):
         print("\n---- LET'S DANCE ----\n")
         ##### WRITE YOUR FIRST PROJECT HERE
         self.encF(18)
-        self.encR(5)
-        self.encL(5)
+        self.encR(6)
+        self.encL(6)
         self.wide_scan()
         self.encB(18)
 
