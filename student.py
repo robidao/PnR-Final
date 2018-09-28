@@ -83,9 +83,9 @@ class Piggy(pigo.Pigo):
             self.encL(18)
 
     def back_and_forth(self):
-        for x in range(2):
-            self.encB(32)
-            self.encF(32)
+        for x in range(3):
+            self.encB(18)
+            self.encF(18)
 
     def obstacle_count(self):
         """scans and estimates the number of obstacles within sight"""
