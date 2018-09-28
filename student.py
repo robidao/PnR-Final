@@ -67,6 +67,8 @@ class Piggy(pigo.Pigo):
             self.back_and_forth()
             self.right()
             time.sleep(1)
+            self.left()
+            time.sleep(1)
             self.stop()
 
     def side_to_side(self):
