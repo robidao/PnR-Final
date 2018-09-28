@@ -72,20 +72,20 @@ class Piggy(pigo.Pigo):
             self.encR(18)
 
     def bob_head(self):
-        for x in range(self.MIDPOINT - 20, self.MIDPOINT + 20,15):
+        for x in range(self.MIDPOINT - 20, self.MIDPOINT + 20,25):
             self.servo(x)
 
     def shake_it_up(self):
-        for x in range(8):
+        for x in range(2):
             self.encB(18)
             self.encR(18)
             self.encF(18)
             self.encL(18)
 
     def back_and_forth(self):
-        for x in range(10):
-            self.encB(108)
-            self.encF(108)
+        for x in range(2):
+            self.encB(32)
+            self.encF(32)
 
     def obstacle_count(self):
         """scans and estimates the number of obstacles within sight"""
