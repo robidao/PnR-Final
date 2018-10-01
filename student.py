@@ -96,9 +96,9 @@ class Piggy(pigo.Pigo):
     # spin left then spin right
     def spin_around (self):
         for x in range (2):
-            self.right(16)
+            self.right(60)
             time.sleep(1)
-            self.left(16)
+            self.left(60)
             time.sleep(1)
             self.stop()
 
