@@ -65,21 +65,21 @@ class Piggy(pigo.Pigo):
             self.bob_head()
             self.shake_it_up()
             self.back_and_forth()
-            self.right()
-            time.sleep(1)
-            self.left()
-            time.sleep(1)
-            self.stop()
+            self.spin_around()
 
+
+    # move left to right on a loop
     def side_to_side(self):
        for x in range(3):
             self.encL(9)
             self.encR(9)
 
+    # move head side to side
     def bob_head(self):
         for x in range(self.MIDPOINT - 20, self.MIDPOINT + 20,15):
             self.servo(x)
 
+    # move in a square-like motion back and right, then forward and left
     def shake_it_up(self):
         for x in range(2):
             self.encB(6)
@@ -87,11 +87,20 @@ class Piggy(pigo.Pigo):
             self.encF(6)
             self.encL(6)
 
+    # move backwards and forwards
     def back_and_forth(self):
         for x in range(3):
             self.encB(6)
             self.encF(6)
 
+    # spin left then spin right
+    def spin_around (self):
+        for x in range (2):
+            self.right(16)
+            time.sleep(1)
+            self.left(16)
+            time.sleep(1)
+            self.stop()
 
 
 
