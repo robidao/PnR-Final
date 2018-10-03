@@ -58,17 +58,18 @@ class Piggy(pigo.Pigo):
     # YOU DECIDE: How does your GoPiggy dance?
     def dance(self):
         """executes a series of methods that add up to a compound dance"""
-        if not safe_to_dance():
+        if not self.safe_to_dance():
             print("\n----NOT SAFE TO DANCE----\n")
             return
-            print("\n---- LET'S DANCE ----\n")
-        ##### WRITE YOUR FIRST PROJECT HERE
-            for x in range(3):
-                self.side_to_side()
-                self.bob_head()
-                self.shake_it_up()
-                self.back_and_forth()
-                self.spin_around()
+
+        print("\n---- LET'S DANCE ----\n")
+
+        for x in range(3):
+            self.side_to_side()
+            self.bob_head()
+            self.shake_it_up()
+            self.back_and_forth()
+            self.spin_around()
 
     def safe_to_dance(self):
         """circles around and checks for any obstacle"""
@@ -80,33 +81,34 @@ class Piggy(pigo.Pigo):
         # if we find no problems:
         return True
 
-    # move left to right on a loop
+
     def side_to_side(self):
-       for x in range(3):
+        """move left to right on a loop"""
+        for x in range(3):
             self.encL(9)
             self.encR(9)
 
-    # move head side to side
     def bob_head(self):
+        """move head side to side"""
         for x in range(self.MIDPOINT - 20, self.MIDPOINT + 20,15):
             self.servo(x)
 
-    # move in a square-like motion back and right, then forward and left
     def shake_it_up(self):
+        """move in a square-like motion back and right, then forward and left"""
         for x in range(2):
             self.encB(6)
             self.encR(6)
             self.encF(6)
             self.encL(6)
 
-    # move backwards and forwards
     def back_and_forth(self):
+        """move backwards and forwards"""
         for x in range(3):
             self.encB(6)
             self.encF(6)
 
-    # spin left then spin right
     def spin_around (self):
+        """spin left then spin right"""
         for x in range (2):
             self.right(60)
             time.sleep(1)
