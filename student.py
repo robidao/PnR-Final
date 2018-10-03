@@ -67,6 +67,7 @@ class Piggy(pigo.Pigo):
         for x in range(3):
             self.side_to_side()
             self.bob_head()
+            self.spin_around()
             self.shake_it_up()
             self.back_and_forth()
             self.spin_around()
@@ -111,9 +112,9 @@ class Piggy(pigo.Pigo):
     def spin_around (self):
         """spin left then spin right"""
         for x in range (2):
-            self.right(60)
+            self.encR(27)
             time.sleep(1)
-            self.left(60)
+            self.encR(27)
             time.sleep(1)
             self.stop()
 
