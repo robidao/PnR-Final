@@ -114,9 +114,7 @@ class Piggy(pigo.Pigo):
         """spin left then spin right"""
         for x in range (2):
             self.encR(27)
-            time.sleep(1)
             self.encR(27)
-            time.sleep(1)
             self.stop()
 
     def walk_back(self):
