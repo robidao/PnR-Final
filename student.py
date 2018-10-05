@@ -72,7 +72,7 @@ class Piggy(pigo.Pigo):
             self.back_and_forth()
             self.spin_around()
             self.walk_back()
-            self.whelie()
+            self.wheelie()
 
     def safe_to_dance(self):
         """circles around and checks for any obstacle"""
@@ -127,12 +127,12 @@ class Piggy(pigo.Pigo):
             self.encB(8)
             self.encL(10)
 
-    def whelie(self):
+    def wheelie(self):
         """have front wheels go up"""
         for x in range(3):
             self.set_speed(255, 255)
             self.encF(5)
-            self.encB(30)
+            self.encB(60)
             self.set_speed(self.LEFT_SPEED, self.RIGHT_SPEED)
 
 
