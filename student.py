@@ -131,8 +131,8 @@ class Piggy(pigo.Pigo):
         """have front wheels go up"""
         for x in range(3):
             self.set_speed(255, 255)
-            self.encF(5)
-            self.encB(60)
+            self.encB(5)
+            self.encF(60)
             self.set_speed(self.LEFT_SPEED, self.RIGHT_SPEED)
 
 
