@@ -62,9 +62,11 @@ class Piggy(pigo.Pigo):
             if self.dist() < 20:
                 self.encB(5)
                 self.encR(5)
-                self.encL(5)
+                self.encL(10)
+                self.encR(5)
                 self.servo(10)
             time.sleep(.1)
+
     # YOU DECIDE: How does your GoPiggy dance?
     def dance(self):
         """executes a series of methods that add up to a compound dance"""
