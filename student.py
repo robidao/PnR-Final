@@ -69,6 +69,7 @@ class Piggy(pigo.Pigo):
                     self.servo(60)
                 self.encR(25)
                 self.encB(5)
+                self.stop()
             time.sleep(.1)
 
     # YOU DECIDE: How does your GoPiggy dance?
