@@ -157,14 +157,16 @@ class Piggy(pigo.Pigo):
         self.wide_scan()
         found_something = False
         counter = 0
-        for ang, distance in enumerate(self.scan):
-            if distance and distance < 300 and not found_something:
-                found_something = True
-                counter += 1
-                print("Object # %d found, I think" % counter)
-            if distance and distance > 300 and found_something:
-                found_something = False
+        for x in range (4):
+            for ang, distance in enumerate(self.scan):
+                if distance and distance < 300 and not found_something:
+                    found_something = True
+                    counter += 1
+                    print("Object # %d found, I think" % counter)
+                if distance and distance > 300 and found_something:
+                    found_something = False
         print("\n----I SEE %d OBJECTS----\n" % counter)
+            #turn right
 
     def safety_check(self):
         """subroutine of the dance method"""
