@@ -77,11 +77,11 @@ class Piggy(pigo.Pigo):
                     # add up the numbers to left_total
                     left_total += self.scan[angle]
                 # if right is bigger:
-                if right_total < left_total:
-                    self.encR(10)   # turn right
-                # if left is bigger:
-                else:
-                    self.encL(10)  # turn left
+            if right_total > left_total:
+                self.encR(6)   # turn right
+            # if left is bigger:
+            else:
+                self.encL(6)  # turn left
 
     def open_house(self):
         """reacts to distance measurements in a cute way"""
