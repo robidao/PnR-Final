@@ -59,7 +59,7 @@ class Piggy(pigo.Pigo):
 
     def skill_test(self):
         """demonstrate two nav skills"""
-        choice = raw_imput("Left/Right or Turn Until Clear")
+        choice = raw_input("Left/Right or Turn Until Clear")
 
         if "l" in choice:
             self.wide_scan(count=4)   # scan the area
