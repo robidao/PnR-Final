@@ -83,6 +83,11 @@ class Piggy(pigo.Pigo):
             else:
                 self.encL(6)  # turn left
 
+        else:
+            # robot turns until nothing is blocking its path
+            while not self.is_clear():
+                self.encL(4)
+
     def open_house(self):
         """reacts to distance measurements in a cute way"""
         while True:
