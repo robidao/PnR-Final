@@ -12,7 +12,7 @@ class Pigo(object):
         """establishes midpoint, standard stop distance and motor speed then opens menu"""
         self.MIDPOINT = 90
         self.HARD_STOP_DIST = 10
-        self.SAFE_STOP_DIST = 30
+        self.SAFE_STOP_DIST = 40
         self.RIGHT_SPEED = 200
         self.LEFT_SPEED = 200
         self.turn_track = 0
