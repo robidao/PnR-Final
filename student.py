@@ -239,10 +239,10 @@ class Piggy(pigo.Pigo):
                         left_total += self.scan[angle]
                     # if right is bigger:
                 if right_total > left_total:
-                    self.encR(6)  # turn right
+                    self.encR(4)  # turn right
                     # if left is bigger:
                 if left_total > right_total:
-                    self.encL(6)    #turn left
+                    self.encL(4)    #turn left
 
     def cruise(self):
         """ drive straight while path is clear """
