@@ -222,14 +222,36 @@ class Piggy(pigo.Pigo):
             if self.is_clear():
                 self.cruise()
             else:
-                self.encR(10)
+                # check if robot should turn right or left before turning
+                self.wide_scan(count=4)  # scan the area
+                # create two variables, left_total and right_total
+                left_total = 0
+                right_total = 0
+                # loop from self.MIDPOINT - 60 to self.MIDPOINT
+                for angle in range(self.MIDPOINT - 60, self.MIDPOINT):
+                    if self.scan[angle]:
+                        # add up the numbers to right_total
+                        right_total += self.scan[angle]
+                # loop from self.MIDPOINT to self.MIDPOINT + 60
+                for angle in range(self.MIDPOINT, self.MIDPOINT + 60):
+                    if self.scan[angle]:
+                        # add up the numbers to left_total
+                        left_total += self.scan[angle]
+                    # if right is bigger:
+                if right_total > left_total:
+                    self.encR(6)  # turn right
+                    # if left is bigger:
+                if left_total > right_total:
+                    self.encL(6)    #turn left
 
     def cruise(self):
         """ drive straight while path is clear """
         self.fwd()
         while self.dist() > self.SAFE_STOP_DIST:
-            time.sleep(.5)
+            time.sleep(.2)
         self.stop()
+
+
 ####################################################
 ############### STATIC FUNCTIONS
 
