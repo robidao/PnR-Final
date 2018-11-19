@@ -222,6 +222,8 @@ class Piggy(pigo.Pigo):
             if self.is_clear():
                 self.cruise()
             else:
+                # back up before choosing which way to turn
+                self.encB(6)
                 # check if robot should turn right or left before turning
                 self.wide_scan(count=4)  # scan the area
                 # create two variables, left_total and right_total
