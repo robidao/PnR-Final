@@ -225,11 +225,13 @@ class Piggy(pigo.Pigo):
                 # back up before choosing which way to turn
                 self.encB(6)
                 # check if robot should turn right or left before turning
+                print('preforming wide scan')
                 self.wide_scan(count=4)  # scan the area
                 # create two variables, left_total and right_total
                 left_total = 0
                 right_total = 0
                 # loop from self.MIDPOINT - 60 to self.MIDPOINT
+                print ('checking direction')
                 for angle in range(self.MIDPOINT - 60, self.MIDPOINT):
                     if self.scan[angle]:
                         # add up the numbers to right_total
@@ -247,6 +249,7 @@ class Piggy(pigo.Pigo):
                     self.encL(3)    #turn left
 
     def cruise(self):
+        print ('cruising')
         """ drive straight while path is clear """
         self.set_speed(100, 100)
         self.fwd()
