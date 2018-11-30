@@ -133,7 +133,6 @@ class Piggy(pigo.Pigo):
         # if we find no problems:
         return True
 
-
     def side_to_side(self):
         """move left to right on a loop"""
         for x in range(3):
@@ -182,8 +181,6 @@ class Piggy(pigo.Pigo):
             self.encB(60)
             self.set_speed(self.LEFT_SPEED, self.RIGHT_SPEED)
 
-
-
     def obstacle_count(self):
         """scans and estimates the number of obstacles within sight"""
         self.wide_scan()
@@ -218,47 +215,52 @@ class Piggy(pigo.Pigo):
         print("-----------! NAVIGATION ACTIVATED !------------\n")
         print("-------- [ Press CTRL + C to stop me ] --------\n")
         print("-----------! NAVIGATION ACTIVATED !------------\n")
-        count = 0
-
-        error_count = 0
-        while True:
-            if self.is_clear():
-                self.cruise()
-                error_count = 0
-            else:
-                error_count += 1
-                if error_count == 10:
-                    raw_input("Hey  what's up")
 
         while True:
             if self.is_clear():
                 self.cruise()
             else:
-                # back up before choosing which way to turn
-                self.encB(6)
-                # check if robot should turn right or left before turning
-                print('preforming wide scan')
-                self.wide_scan(count=4)  # scan the area
-                # create two variables, left_total and right_total
-                left_total = 0
-                right_total = 0
-                # loop from self.MIDPOINT - 60 to self.MIDPOINT
-                print ('checking direction')
-                for angle in range(self.MIDPOINT - 60, self.MIDPOINT):
-                    if self.scan[angle]:
-                        # add up the numbers to right_total
-                        right_total += self.scan[angle]
-                # loop from self.MIDPOINT to self.MIDPOINT + 60
-                for angle in range(self.MIDPOINT, self.MIDPOINT + 60):
-                    if self.scan[angle]:
-                        # add up the numbers to left_total
-                        left_total += self.scan[angle]
-                    # if right is bigger:
-                if right_total > left_total:
-                    self.encR(5)  # turn right
-                    # if left is bigger:
-                if left_total > right_total:
-                    self.encL(5)    #turn left
+                self.choose_direction()
+
+
+    def choose_direction(self):
+        # back up before choosing which way to turn
+        self.encB(6)
+        # check if robot should turn right or left before turning
+        print(' /n /n /n ---- no path ahead: preforming wide scan --- /n /n /n')
+        self.wide_scan(count=4)  # scan the area
+        # create two variables, left_total and right_total
+        left_total = 0
+        right_total = 0
+        # loop from self.MIDPOINT - 60 to self.MIDPOINT
+        print('checking direction')
+        for angle in range(self.MIDPOINT - 60, self.MIDPOINT):
+            if self.scan[angle]:
+                # add up the numbers to right_total
+                right_total += self.scan[angle]
+        # loop from self.MIDPOINT to self.MIDPOINT + 60
+        for angle in range(self.MIDPOINT, self.MIDPOINT + 60):
+            if self.scan[angle]:
+                # add up the numbers to left_total
+                left_total += self.scan[angle]
+            # if right is bigger:
+        # can I actually keep going straight?
+        if self.is_clear_ahead():
+            print(" /n /n /n ---- IT'S ACTUALLY CLEAR AHEAD, KEEP GOING --- /n /n /n")
+            self.cruise()
+        elif right_total > left_total:
+            print(' /n /n /n ---- i suppose it is better on my right side --- /n /n /n')
+            self.encR(5)  # turn right
+            # if left is bigger:
+        elif left_total > right_total:
+            print(' /n /n /n ---- i suppose it is better on my left side --- /n /n /n')
+            self.encL(5)  # turn left
+
+    def is_clear_ahead(self):
+        for ang in range(self.MIDPOINT - 10, self.MIDPOINT + 10):
+            if self.scan[ang] and self.scan[ang] < self.SAFE_STOP_DIST:
+                return False
+        return True
 
     def cruise(self):
         print ('cruising')
