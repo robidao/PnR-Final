@@ -260,7 +260,6 @@ class Piggy(pigo.Pigo):
         for ang in range(self.MIDPOINT - 10, self.MIDPOINT + 10):
             if self.scan[ang] and self.scan[ang] < self.SAFE_STOP_DIST:
                 return False
-        return True
 
     def cruise(self):
         print ('cruising')
