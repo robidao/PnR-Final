@@ -257,7 +257,7 @@ class Piggy(pigo.Pigo):
             self.encL(5)  # turn left
 
     def is_clear_ahead(self):
-        for ang in range(self.MIDPOINT - 10, self.MIDPOINT + 10):
+        for ang in range(self.MIDPOINT - 14, self.MIDPOINT + 14):
             if self.scan[ang] and self.scan[ang] < self.SAFE_STOP_DIST:
                 return False
 
