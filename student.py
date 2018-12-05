@@ -231,7 +231,7 @@ class Piggy(pigo.Pigo):
 
     def choose_direction(self):
         # back up before choosing which way to turn
-        self.encB(6)
+        self.encB(4)
         # check if robot should turn right or left before turning
         print(' /n /n /n ---- preforming wide scan --- /n /n /n')
         self.wide_scan(count=4)  # scan the area
