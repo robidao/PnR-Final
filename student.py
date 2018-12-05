@@ -217,17 +217,23 @@ class Piggy(pigo.Pigo):
         print("-----------! NAVIGATION ACTIVATED !------------\n")
 
         while True:
-            if self.is_clear():
+            self.choose_direction()
+            # chooses whether to go straight, left, or right
+            while self.is_clear():
                 self.cruise()
-            else:
-                self.choose_direction()
+            # while it is clear, cruise
+            self.turn_until_clear()
+            # turn until clear, then go forward in clear direction
 
+    def turn_until_clear(self):
+        while not self.is_clear():
+            self.encL(4)
 
     def choose_direction(self):
         # back up before choosing which way to turn
         self.encB(6)
         # check if robot should turn right or left before turning
-        print(' /n /n /n ---- no path ahead: preforming wide scan --- /n /n /n')
+        print(' /n /n /n ---- preforming wide scan --- /n /n /n')
         self.wide_scan(count=4)  # scan the area
         # create two variables, left_total and right_total
         left_total = 0
@@ -247,7 +253,7 @@ class Piggy(pigo.Pigo):
         # can I actually keep going straight?
         if self.is_clear_ahead():
             print(" /n /n /n ---- IT'S ACTUALLY CLEAR AHEAD, KEEP GOING --- /n /n /n")
-            self.cruise()
+            return
         elif right_total > left_total:
             print(' /n /n /n ---- i suppose it is better on my right side --- /n /n /n')
             self.encR(5)  # turn right
@@ -260,6 +266,7 @@ class Piggy(pigo.Pigo):
         for ang in range(self.MIDPOINT - 14, self.MIDPOINT + 14):
             if self.scan[ang] and self.scan[ang] < self.SAFE_STOP_DIST:
                 return False
+        return True
 
     def cruise(self):
         print ('cruising')
