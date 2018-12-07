@@ -227,7 +227,7 @@ class Piggy(pigo.Pigo):
 
     def turn_until_clear(self):
         while not self.is_clear():
-            self.encL(4)
+            self.encR(4)
 
     def choose_direction(self):
         # check if robot should turn right or left before turning
