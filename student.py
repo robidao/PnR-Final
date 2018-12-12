@@ -231,6 +231,8 @@ class Piggy(pigo.Pigo):
                         self.encR(4)
                     if "l" in choice:
                         self.encL(4)
+                    if "b" in choice:
+                        self.encB(4)
 
 
     def turn_until_clear(self):
