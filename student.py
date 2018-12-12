@@ -27,6 +27,7 @@ class Piggy(pigo.Pigo):
         self.RIGHT_SPEED = 120
         # This one isn't capitalized because it changes during runtime, the others don't
         self.turn_track = 0
+        self.frustrated = 0
         # Our scan list! The index will be the degree and it will store distance
         self.scan = [None] * 180
         self.set_speed(self.LEFT_SPEED, self.RIGHT_SPEED)
@@ -221,19 +222,31 @@ class Piggy(pigo.Pigo):
             # chooses whether to go straight, left, or right
             while self.is_clear():
                 self.cruise()
-            # while it is clear, cruise
-            self.turn_until_clear()
-            # turn until clear, then go forward in clear direction
+
+            # HUMAN INTERVENTION
+            if self.frustrated > 3:
+                while not self.is_clear():
+                    choice = raw_input("which direction whould I turn?")
+                    if "r" in choice:
+                        self.encR(4)
+                    if "l" in choice:
+                        self.encL(4)
+
 
     def turn_until_clear(self):
-        while not self.is_clear():
-            choice = raw_input("which direction whould I turn?")
-            if "R" in choice:
-                self.encR(4)
-            if "L" in choice:
-                self.encL(4)
+        if self.frustrated > 3:
+            while not self.is_clear():
+                choice = raw_input("which direction whould I turn?")
+                if "r" in choice:
+                    self.encR(4)
+                if "l" in choice:
+                    self.encL(4)
+        else:
+            random.choice(["right", "left"])
 
     def choose_direction(self):
+        self.frustrated += 1
+        print("/n I'm frustrated: " + str(self.frustrated) + " time(s). /n")
         # check if robot should turn right or left before turning
         print(' /n /n /n ---- preforming wide scan --- /n /n /n')
         self.wide_scan(count=4)  # scan the area
