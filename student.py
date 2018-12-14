@@ -241,6 +241,7 @@ class Piggy(pigo.Pigo):
 
 
     def turn_until_clear(self):
+        """turns until the is_clear method returns true"""
         # when the path isn't clear the 4th time choose direction on monitor
         if self.frustrated > 3:
             while not self.is_clear():
