@@ -221,29 +221,38 @@ class Piggy(pigo.Pigo):
             self.choose_direction()
             # chooses whether to go straight, left, or right
             while self.is_clear():
+                # drive forward while path is clear
                 self.cruise()
 
-            # HUMAN INTERVENTION
+            # HUMAN INTERVENTION after robot is frustrated (somethings blocking it) 3 times
             if self.frustrated > 3:
+                # when the path isn't clear the 4th time choose direction on monitor
                 while not self.is_clear():
                     choice = raw_input("which direction whould I turn?")
+                    # if I want robot to go right, choose r
                     if "r" in choice:
                         self.encR(4)
+                    # if I want robot to go left, choose l
                     if "l" in choice:
                         self.encL(4)
+                    # if I want robot to go backwards, choose b
                     if "b" in choice:
                         self.encB(4)
 
 
     def turn_until_clear(self):
+        # when the path isn't clear the 4th time choose direction on monitor
         if self.frustrated > 3:
             while not self.is_clear():
                 choice = raw_input("which direction whould I turn?")
+                # if I want robot to go right, choose r
                 if "r" in choice:
                     self.encR(4)
+                # if I want robot to go left, choose l
                 if "l" in choice:
                     self.encL(4)
         else:
+            # when it is less than 3 frustrations, randomly turn left or right
             random.choice(["right", "left"])
 
     def choose_direction(self):
@@ -269,9 +278,11 @@ class Piggy(pigo.Pigo):
             # if right is bigger:
         # can I actually keep going straight?
         if self.is_clear_ahead():
+            # if there is nothing ahead, rely the message, it's actually clear ahead keep going
             print(" /n /n /n ---- IT'S ACTUALLY CLEAR AHEAD, KEEP GOING --- /n /n /n")
             return
         elif right_total > left_total:
+            # if there right is bigger:
             print(' /n /n /n ---- i suppose it is better on my right side --- /n /n /n')
             self.encR(5)  # turn right
             # if left is bigger:
