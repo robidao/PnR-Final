@@ -257,6 +257,7 @@ class Piggy(pigo.Pigo):
             random.choice(["right", "left"])
 
     def choose_direction(self):
+        """choose direction when is_clear returns false"""
         self.frustrated += 1
         print("/n I'm frustrated: " + str(self.frustrated) + " time(s). /n")
         # check if robot should turn right or left before turning
